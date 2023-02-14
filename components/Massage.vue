@@ -24,10 +24,10 @@ const url = useRuntimeConfig().bookings;
   </a>
 </template>
 
-<style>
+<style lang="scss" scoped>
 .massage {
   display: block;
-  width: 28rem;
+  max-width: 28rem;
   padding: 2rem;
   margin: 2rem;
   background: white;
@@ -35,17 +35,17 @@ const url = useRuntimeConfig().bookings;
   box-shadow: 0px 0px 0px 2px var(--palette-linen);
   transition: transform 100ms ease-in-out;
   color: #4a4a4a;
-}
-.massage:hover {
-  transform: scale(1.03);
+  &:hover {
+    transform: scale(1.03);
+  }
 }
 
 .massage__title {
   color: var(--palette-brown);
   text-align: center;
-}
-.massage__title:hover {
-  color: var(--palette-black);
+  &:hover {
+    color: black;
+  }
 }
 
 .massage__price {
@@ -54,16 +54,17 @@ const url = useRuntimeConfig().bookings;
   font-size: 1.2rem;
   font-weight: bold;
   margin-top: 1rem;
-}
-.massage__price:hover {
-  color: var(--palette-black);
-}
-.massage__price .pounds {
-  font-size: 0.6em;
-  margin-right: 0.1rem;
-}
-.massage__price .bullet {
-  margin: 0 1rem;
-  opacity: 0.3;
+  &:hover {
+    color: var(--palette-black);
+  }
+  .pounds {
+    font-size: 0.7em;
+    margin-right: 0.2rem;
+    opacity: 0.8;
+  }
+  .bullet {
+    margin: 0 1rem;
+    opacity: 0.3;
+  }
 }
 </style>

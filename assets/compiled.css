@@ -1,25 +1,21 @@
 @charset "UTF-8";
 /* Import a bit of Bulma */
+/* Use navbar is-light with this */
 :root {
-  --nena-cream: #FDF6EB;
-  --nena-cream-active: #FBECD4;
-  --palette-rose: #C67070;
+  --palette-cream: #FDF6EB;
+  --palette-cream-active: #FBECD4;
   --palette-red: #D14F4F;
-  --palette-rose-light: #DCB5B5;
-  --palette-black: #1F2023;
   --palette-brown: #826C5F;
   --palette-linen: #EBE2D7;
   --palette-olive: #A1AC86;
 }
 
-/* Use navbar is-light with this */
 /* [override] Disable fullHD breakpoint */
 /* [override] flat forms */
 /* [override] flat cards */
 /* [override] flat tables */
 /* Hr should look like media, slightly darker than normal */
 /* Set up sensible design defaults */
-/* Typically you just need to set the breadcrumb-item-color */
 /*! bulma.io v0.9.4 | MIT License | github.com/jgthms/bulma */
 /* Bulma Utilities */
 .pagination-previous,
@@ -358,7 +354,7 @@ body {
   color: hsl(0deg, 0%, 29%);
   font-size: 1em;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.7;
 }
 
 a {
@@ -9906,57 +9902,8 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   color: hsl(0deg, 0%, 100%);
 }
 
-.hero-text {
-  flex-grow: 1;
-  font-size: 50px;
-  text-align: center;
-  max-width: 40rem;
-  font-weight: 200;
-  font-weight: 200;
-  text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
-}
-
+/* Theme-wide tweak */
 .title {
   font-weight: 200;
   text-transform: uppercase;
-}
-
-.section-2 {
-  background: #FDF6EB;
-}
-
-.navbar {
-  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.3);
-}
-
-@media screen and (min-width: 1024px) {
-  .navbar-end > a.navbar-item {
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-weight: 200;
-    color: black !important;
-    font-size: 14px;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  .hero-text {
-    padding-top: 4rem;
-    font-size: 60px;
-  }
-  .nena-profile-pic {
-    width: 180px !important;
-    height: 180px !important;
-    margin-top: -1rem;
-    margin-left: -1rem;
-  }
-}
-@media screen and (max-width: 1023px) {
-  .navbar-end a.navbar-item {
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    text-align: center;
-  }
-  .nena-profile-pic {
-    margin: 0 auto;
-  }
 }

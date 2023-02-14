@@ -4,29 +4,12 @@
 /* Import a bit of Bulma */
 @import 'bulma/sass/utilities/initial-variables.sass';
 
-$nena-cream: #FDF6EB;
-$nena-cream-active: #FBECD4;
-
-$palette-rose: #C67070;
+$palette-cream: #FDF6EB;
+$palette-cream-active: #FBECD4;
 $palette-red: #D14F4F;
-$palette-rose-light: #DCB5B5;
-$palette-black: #1F2023;
 $palette-brown: #826C5F;
 $palette-linen: #EBE2D7;
 $palette-olive: #A1AC86;
-
-:root {
-  // create a variable
-  --nena-cream: #{$nena-cream};
-  --nena-cream-active: #{$nena-cream-active};
-  --palette-rose: #{$palette-rose};
-  --palette-red: #{$palette-red};
-  --palette-rose-light: #{$palette-rose-light};
-  --palette-black: #{$palette-black};
-  --palette-brown: #{$palette-brown};
-  --palette-linen: #{$palette-linen};
-  --palette-olive: #{$palette-olive};
-}
 
 $red: $palette-red;
 $link: $palette-red;
@@ -35,7 +18,17 @@ $link: $palette-red;
 $family-sans-serif: 'Commissioner';
 
 /* Use navbar is-light with this */
-$white-ter: $nena-cream;
+$white-ter: $palette-cream;
+
+:root {
+  // create a variable
+  --palette-cream: #{$palette-cream};
+  --palette-cream-active: #{$palette-cream-active};
+  --palette-red: #{$palette-red};
+  --palette-brown: #{$palette-brown};
+  --palette-linen: #{$palette-linen};
+  --palette-olive: #{$palette-olive};
+}
 
 /* [override] Disable fullHD breakpoint */
 $fullhd-enabled: false;
@@ -60,73 +53,16 @@ $footer-background-color: $grey-darker !default;
 $footer-color: $white !default;
 
 $navbar-height: 8rem !default;
+
 // Image natural height is 186px
 $navbar-item-img-max-height: 93px !default;
-// $navbar-item-img-max-height: 6rem !default;
 
-/* Typically you just need to set the breadcrumb-item-color */
-// $breadcrumb-item-color: $grey-darker !default;
-// $breadcrumb-item-hover-color: $breadcrumb-item-color !default;
-// $breadcrumb-item-active-color: $breadcrumb-item-color !default;
-// $breadcrumb-item-separator-color: $breadcrumb-item-color !default;
+$body-line-height: 1.7;
 
 @import 'bulma/bulma.sass';
 
-.hero-text {
-  flex-grow: 1;
-  font-size: 50px;
-  text-align: center;
-  max-width: 40rem;
-  font-weight: 200;
-  // font-family: 'Commissioner', sans-serif;
-  font-weight: 200;
-  text-shadow: 0px 0px 20px rgba(0,0,0,0.4);
-}
-
-
+/* Theme-wide tweak */
 .title {
-  // font-family: 'Commissioner', sans-serif;
   font-weight: 200;
   text-transform: uppercase;
-}
-
-.section-2 {
-  background: $nena-cream;
-}
-
-
-.navbar {
-  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.3);
-}
-
-@include desktop {
-  .navbar-end > a.navbar-item {
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-weight: 200;
-    color: black !important;
-    font-size: 14px;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  .hero-text {
-    padding-top: 4rem;
-    font-size: 60px;
-  }
-  .nena-profile-pic {
-    width: 180px !important;
-    height: 180px !important;
-    margin-top: -1rem;
-    margin-left: -1rem;
-  }
-}
-@include touch {
-  .navbar-end a.navbar-item {
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    text-align: center;
-  }
-  .nena-profile-pic {
-    margin: 0 auto;
-  }
 }

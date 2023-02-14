@@ -1,11 +1,9 @@
 <script setup>
-import { processExpression } from "@vue/compiler-core";
-
 const sectionRef = ref(null);
 const relativeY = ref(0);
 
 const parallaxY = computed(() => {
-  return -relativeY.value * 0.2;
+  return -relativeY.value * 0.5;
 });
 
 defineProps({

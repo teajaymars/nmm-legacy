@@ -12,15 +12,16 @@ import nenaProfilePic from "~/assets/images/nenaProfilePic.webp";
       <div class="hero-text">A 360&#176;<br />approach to massage therapy</div>
     </HeroImage>
 
-    <section class="section section-1 mt-6">
-      <div class="container" style="max-width: 44rem">
+    <section class="section section-1">
+      <div class="anchor" id="philosophy"></div>
+      <div class="container mt-6" style="max-width: 44rem">
         <div class="title is-2" style="max-width: 20rem">
           Holistic Massage Philosophy
         </div>
 
         <div class="columns mt-6">
           <div class="column is-one-third">
-            <figure class="image is-128x128 nena-profile-pic">
+            <figure class="image nena-profile-pic">
               <img class="is-rounded" :src="nenaProfilePic" />
             </figure>
           </div>
@@ -44,81 +45,14 @@ import nenaProfilePic from "~/assets/images/nenaProfilePic.webp";
     <HeroImage :image="legMassage" />
 
     <section class="section section-2">
+      <div class="anchor" id="services"></div>
       <div class="container">
-        <div class="massages-wrapper">
-          <Massage
-            massage-title="First Appointment"
-            :options="[{ duration: 60, price: 60 }]"
-          >
-            <p>
-              An initial consultation is essential if you haven't seen me
-              before.
-            </p>
-            <p>
-              We will do a head-to-toe postural assessment, joint assessment and
-              any special tests as required, to allow us to create a plan
-              tailored to your specific needs.
-            </p>
-            <p>We will also begin treatment in your first session.</p>
-            <p>
-              The first step to a more flexible, relaxed and revitalised you!
-            </p>
-          </Massage>
-        </div>
-
-        <div class="massages-wrapper">
-          <Massage
-            massage-title="Sports/Deep Tissue Massage"
-            :options="[
-              { duration: 30, price: 35 },
-              { duration: 60, price: 60 },
-            ]"
-          >
-            <p>
-              For those seeking treatment for anything from sports injury, soft
-              tissue dysfunctoin, or everyday aches and pains from the stresses
-              of the day. Includes consultation, assessment and treatment.
-            </p>
-
-            <p>
-              The aim is to address the root cause of your pain; this will be
-              done through the assessment process. Treatment will seke out knots
-              and areas of tightness, aid joint mobility and restore your range
-              of movement.
-            </p>
-            <p>
-              Along with massage, I used a combination of techniques targeted to
-              suit your specific needs. These include Soft Tissue and Myofascial
-              Release, Muscle Energy and Neuromuscular Techniques.
-            </p>
-          </Massage>
-
-          <Massage
-            massage-title="Relaxing Massage"
-            :options="[{ duration: 60, price: 60 }]"
-          >
-            <p>
-              For those who just want to unwind.<br />After a short
-              consultation, you can choose from either:
-            </p>
-            <ul>
-              <li>Full body</li>
-              <li>Back, neck and shoulders</li>
-              <li>Full legs and lower back</li>
-            </ul>
-            <p>
-              Each massage is tailored to suit you, with more detailed focus on
-              a specific area if required.<br />
-              I use a range of therapeutic massage strokes to relax sore and
-              aching muscles, boost circulation and cruicially, help you achieve
-              some quality &lsquo;you&rsquo; time. You will leave feeling
-              thoroughly refreshed, and ready to take on the world!
-            </p>
-          </Massage>
-        </div>
+        <Massages />
       </div>
     </section>
+
     <section class="section section-3">
+      <div class="anchor" id="contact"></div>
       <div class="container">
         <div
           class="juicer-feed"
@@ -130,19 +64,55 @@ import nenaProfilePic from "~/assets/images/nenaProfilePic.webp";
   </div>
 </template>
 
-<style>
+<style lang="scss">
+@import "~/node_modules/bulma/sass/utilities/mixins.sass";
+
 .app-wrapper {
   /* Make room for the navbar */
   padding-top: 8rem;
 }
-section.section {
-  min-height: 70vh;
+
+.hero-text {
+  /* Massive white text */
+  flex-grow: 1;
+  font-size: 50px;
+  text-align: center;
+  max-width: 38rem;
+  font-weight: 200;
+  text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+  @include desktop {
+    padding-top: 4rem;
+    font-size: 60px;
+  }
 }
-.massages-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: center;
-  /* gap: 2rem; */
+
+.section-2 {
+  background: var(--palette-cream);
+}
+
+/* All sections are most of the screen */
+section.section {
+  min-height: 88vh;
+  position: relative;
+}
+
+/* Clickable nav links */
+.anchor {
+  position: absolute;
+  top: -8rem;
+  left: 0;
+  width: 0px;
+  height: 0px;
+}
+
+.nena-profile-pic {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+
+  @include desktop {
+    margin-left: -1rem;
+    margin-top: -1rem;
+  }
 }
 </style>

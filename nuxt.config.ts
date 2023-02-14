@@ -16,7 +16,8 @@ export default defineNuxtConfig({
         {
           rel: "stylesheet",
           // href: "https://fonts.googleapis.com/css2?family=Commissioner:wght@200&family=Poppins:ital,wght@0,200;0,400;0,600;1,400;1,600&display=swap",
-          href: "https://fonts.googleapis.com/css2?family=Commissioner:wght@200;300;400&family=Poppins:ital,wght@0,200;0,400;0,600;1,400;1,600&display=swap",
+          href: "https://fonts.googleapis.com/css2?family=Commissioner:wght@200;300;400",
+          // href: "https://fonts.googleapis.com/css2?family=Commissioner:wght@200;300;400&family=Poppins:ital,wght@0,200;0,400;0,600;1,400;1,600&display=swap",
           // href: "https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;1,400;1,600&display=swap",
         },
       ],
