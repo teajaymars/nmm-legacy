@@ -86,10 +86,6 @@
     display: grid;
     grid-auto-columns: minmax(0, 1fr);
     grid-auto-flow: column;
-
-    // flex-direction: row;
-    // align-items: flex-start;
-    // justify-content: center;
   }
 }
 </style>

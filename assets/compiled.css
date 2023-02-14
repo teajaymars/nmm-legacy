@@ -1,15 +1,6 @@
 @charset "UTF-8";
 /* Import a bit of Bulma */
 /* Use navbar is-light with this */
-:root {
-  --palette-cream: #FDF6EB;
-  --palette-cream-active: #FBECD4;
-  --palette-red: #D14F4F;
-  --palette-brown: #826C5F;
-  --palette-linen: #EBE2D7;
-  --palette-olive: #A2AC87;
-}
-
 /* [override] Disable fullHD breakpoint */
 /* [override] flat forms */
 /* [override] flat cards */
@@ -9902,8 +9893,43 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   color: hsl(0deg, 0%, 100%);
 }
 
+:root {
+  --palette-cream: #FDF6EB;
+  --palette-cream-active: #FBECD4;
+  --palette-red: #D14F4F;
+  --palette-brown: #826C5F;
+  --palette-linen: #EBE2D7;
+  --palette-olive: #A2AC87;
+  --text: hsl(0deg, 0%, 29%);
+}
+
 /* Theme-wide tweak */
 .title {
   font-weight: 200;
   text-transform: uppercase;
+}
+
+.magic-underline {
+  position: relative;
+}
+
+.magic-underline:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: -1px;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 0%;
+  position: absolute;
+  background: hsl(0deg, 0%, 29%);
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+
+.magic-underline--white:after {
+  background: hsl(0deg, 0%, 100%);
+}
+
+.magic-underline:hover:after {
+  width: 100%;
 }

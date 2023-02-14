@@ -14,7 +14,11 @@ const url = useRuntimeConfig().bookings;
     :title="'Book massage: ' + massageTitle"
   >
     <div class="content">
-      <div class="title is-4 massage__title">{{ massageTitle }}</div>
+      <div class="title is-4 massage__title">
+        <span class="magic-underline">
+          {{ massageTitle }}
+        </span>
+      </div>
       <slot />
       <div v-for="{ duration, price } of options" class="massage__price">
         {{ duration }} mins <span class="bullet">&bullet;</span>
@@ -44,7 +48,7 @@ const url = useRuntimeConfig().bookings;
   color: var(--palette-brown);
   text-align: center;
   &:hover {
-    color: black;
+    color: var(--text);
   }
 }
 
@@ -55,7 +59,7 @@ const url = useRuntimeConfig().bookings;
   font-weight: bold;
   margin-top: 1rem;
   &:hover {
-    color: var(--palette-black);
+    color: var(--text);
   }
   .pounds {
     font-size: 0.7em;

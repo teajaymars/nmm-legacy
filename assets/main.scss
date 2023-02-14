@@ -21,16 +21,6 @@ $family-sans-serif: 'Commissioner';
 /* Use navbar is-light with this */
 $white-ter: $palette-cream;
 
-:root {
-  // create a variable
-  --palette-cream: #{$palette-cream};
-  --palette-cream-active: #{$palette-cream-active};
-  --palette-red: #{$palette-red};
-  --palette-brown: #{$palette-brown};
-  --palette-linen: #{$palette-linen};
-  --palette-olive: #{$palette-olive};
-}
-
 /* [override] Disable fullHD breakpoint */
 $fullhd-enabled: false;
 
@@ -62,8 +52,43 @@ $body-line-height: 1.7;
 
 @import 'bulma/bulma.sass';
 
+:root {
+  // create a variable
+  --palette-cream: #{$palette-cream};
+  --palette-cream-active: #{$palette-cream-active};
+  --palette-red: #{$palette-red};
+  --palette-brown: #{$palette-brown};
+  --palette-linen: #{$palette-linen};
+  --palette-olive: #{$palette-olive};
+  --text: #{$text};
+}
+
+
 /* Theme-wide tweak */
 .title {
   font-weight: 200;
   text-transform: uppercase;
+}
+
+.magic-underline {
+  position: relative;
+}
+
+.magic-underline:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: -1px;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 0%;
+  position: absolute;
+  background: $text;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+.magic-underline--white:after {
+  background: $white;
+}
+.magic-underline:hover:after {
+  width: 100%; 
 }

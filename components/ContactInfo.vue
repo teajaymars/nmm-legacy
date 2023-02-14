@@ -18,19 +18,32 @@ const address = ref([
       <div class="contact-block">
         <WebpIcon class="contact-icon" icon="instagram" />
         <div>
-          <a :href="'https://www.instagram.com/' + insta"> @{{ insta }} </a>
+          <a
+            :href="'https://www.instagram.com/' + insta"
+            class="magic-underline magic-underline--white"
+          >
+            @{{ insta }}
+          </a>
         </div>
       </div>
       <div class="contact-block">
         <WebpIcon class="contact-icon" icon="phone" />
         <div>
-          <a :href="'tel:' + tel">{{ tel }}</a>
+          <a
+            :href="'tel:' + tel"
+            class="magic-underline magic-underline--white"
+            >{{ tel }}</a
+          >
         </div>
       </div>
       <div class="contact-block">
         <WebpIcon class="contact-icon" icon="envelope" />
         <div>
-          <a href="mailto:hello@nenamagermassage.co.uk" target="_blank">
+          <a
+            href="mailto:hello@nenamagermassage.co.uk"
+            target="_blank"
+            class="magic-underline magic-underline--white"
+          >
             hello@nenamagermassage.co.uk
           </a>
         </div>
@@ -46,7 +59,12 @@ const address = ref([
         </div>
       </div>
     </div>
-    <div class="column is-narrow">Instagram latest</div>
+    <div class="column is-narrow">
+      <div
+        class="instagram--wrapper"
+        v-html="useRuntimeConfig().instagramEmbedCode"
+      />
+    </div>
   </div>
 </template>
 
@@ -55,13 +73,6 @@ const address = ref([
   font-style: normal;
   color: var(--body-color);
 }
-// .table--contacts {
-//   background: transparent;
-//   tr td:first-child {
-//     text-align: right;
-//     color: white;
-//   }
-// }
 
 .contact-block {
   display: flex;
@@ -84,5 +95,15 @@ const address = ref([
 
 a {
   color: white;
+}
+
+.instagram--wrapper {
+  border-radius: 4px;
+  display: flex;
+  background: white;
+  width: 28rem;
+  overflow: hidden;
+  box-shadow: 0 0 0 2px #dbdbdb;
+  margin-top: -3rem;
 }
 </style>
