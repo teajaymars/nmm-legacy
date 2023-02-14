@@ -41,9 +41,9 @@
           movement.
         </p>
         <p>
-          Along with massage, I used a combination of techniques targeted to
-          suit your specific needs. These include Soft Tissue and Myofascial
-          Release, Muscle Energy and Neuromuscular Techniques.
+          Along with massage, I use a combination of techniques targeted to suit
+          your specific needs. These include Soft Tissue and Myofascial Release,
+          Muscle Energy and Neuromuscular Techniques.
         </p>
       </Massage>
 
