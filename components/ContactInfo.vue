@@ -69,6 +69,8 @@ const address = ref([
 </template>
 
 <style lang="scss" scoped>
+@import "~/node_modules/bulma/sass/utilities/mixins.sass";
+
 .postal-address {
   font-style: normal;
   color: var(--body-color);
@@ -104,6 +106,8 @@ a {
   width: 28rem;
   overflow: hidden;
   box-shadow: 0 0 0 2px #dbdbdb;
-  margin-top: -3rem;
+  @include desktop {
+    margin-top: -3rem;
+  }
 }
 </style>
