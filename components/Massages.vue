@@ -30,13 +30,13 @@
       >
         <p>
           For those seeking treatment for anything from sports injury, soft
-          tissue dysfunctoin, or everyday aches and pains from the stresses of
+          tissue dysfunction, or everyday aches and pains from the stresses of
           the day. Includes consultation, assessment and treatment.
         </p>
 
         <p>
           The aim is to address the root cause of your pain; this will be done
-          through the assessment process. Treatment will seke out knots and
+          through the assessment process. Treatment will seek out knots and
           areas of tightness, aid joint mobility and restore your range of
           movement.
         </p>

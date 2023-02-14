@@ -54,11 +54,7 @@ import nenaProfilePic from "~/assets/images/nenaProfilePic.webp";
     <section class="section section-3">
       <div class="anchor" id="contact"></div>
       <div class="container">
-        <div
-          class="juicer-feed"
-          data-feed-id="nenamager_massagetherapy"
-          data-per="4"
-        ></div>
+        <ContactInfo />
       </div>
     </section>
   </div>
@@ -88,6 +84,14 @@ import nenaProfilePic from "~/assets/images/nenaProfilePic.webp";
 
 .section-2 {
   background: var(--palette-cream);
+}
+.section-3 {
+  background: var(--palette-olive);
+  color: white;
+  .title,
+  a {
+    color: white;
+  }
 }
 
 /* All sections are most of the screen */

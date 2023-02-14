@@ -1,0 +1,88 @@
+<script setup>
+const urlMap = ref(
+  "https://www.google.co.uk/maps/place/West+Oxford+Community+Centre/@51.7531613,-1.2758741,17.55z/data=!4m6!3m5!1s0x4876c69aff5db361:0xa8addbae62bb67cc!8m2!3d51.7528669!4d-1.2751845!16s%2Fg%2F1v3hzh5f"
+);
+const tel = ref("07860 639758");
+const insta = ref("nenamager_massagetherapy");
+const address = ref([
+  "West Oxford Community Centre",
+  "Botley Road",
+  "Oxford",
+  "OX2 0BT",
+]);
+</script>
+<template>
+  <div class="columns mt-6">
+    <div class="column">
+      <div class="title is-2 mb-6">Get In Touch</div>
+      <div class="contact-block">
+        <WebpIcon class="contact-icon" icon="instagram" />
+        <div>
+          <a :href="'https://www.instagram.com/' + insta"> @{{ insta }} </a>
+        </div>
+      </div>
+      <div class="contact-block">
+        <WebpIcon class="contact-icon" icon="phone" />
+        <div>
+          <a :href="'tel:' + tel">{{ tel }}</a>
+        </div>
+      </div>
+      <div class="contact-block">
+        <WebpIcon class="contact-icon" icon="envelope" />
+        <div>
+          <a href="mailto:hello@nenamagermassage.co.uk" target="_blank">
+            hello@nenamagermassage.co.uk
+          </a>
+        </div>
+      </div>
+      <div class="contact-block">
+        <WebpIcon class="contact-icon" icon="pin" />
+        <div>
+          <a :href="urlMap" target="_blank">
+            <address class="postal-address">
+              <template v-for="line of address"> {{ line }}<br /> </template>
+            </address>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="column is-narrow">Instagram latest</div>
+  </div>
+</template>
+
+<style lang="scss" scoped>
+.postal-address {
+  font-style: normal;
+  color: var(--body-color);
+}
+// .table--contacts {
+//   background: transparent;
+//   tr td:first-child {
+//     text-align: right;
+//     color: white;
+//   }
+// }
+
+.contact-block {
+  display: flex;
+  max-width: 22rem;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 1rem;
+  .contact-icon {
+    margin-right: 1rem;
+    height: auto;
+    flex-grow: 0;
+    padding-top: 1px;
+  }
+}
+
+.contact-block + .contact-block {
+  border-top: 2px solid white;
+}
+
+a {
+  color: white;
+}
+</style>
