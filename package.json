@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "scripts": {
+    "build:css": "sass --no-source-map -I node_modules assets/main.scss assets/compiled.css",
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "yarn build:css && nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "nuxt": "^3.2.0"
+  },
+  "dependencies": {
+    "bulma": "^0.9.4",
+    "sass": "^1.58.0"
+  }
+}
