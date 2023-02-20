@@ -31,7 +31,7 @@ import nenaProfilePic from "~/assets/images/nenaProfilePic.webp";
                 I'm passionate about providing quality massage therapy. Whether
                 it's a full body restoring massage to help unwind aching muscles
                 and a tired mind; or a deep tissue sports massage, to target
-                specific areas of pain and dysfunction. Wheatever your ailment,
+                specific areas of pain and dysfunction. Whatever your ailment,
                 it's my pleasure to help you. I take a 360&#176; holistic
                 approach - not just treating the areas that hurt, but working
                 with you to find the root cause.
