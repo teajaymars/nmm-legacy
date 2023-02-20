@@ -28,7 +28,7 @@ import nenaProfilePic from "~/assets/images/nenaProfilePic.webp";
           <div class="column">
             <div class="content">
               <p>
-                I'm passionate about providing quality massage therapy. Whether
+                Based in West Oxford, I'm passionate about providing quality massage therapy. Whether
                 it's a full body restoring massage to help unwind aching muscles
                 and a tired mind; or a deep tissue sports massage, to target
                 specific areas of pain and dysfunction. Whatever your ailment,
