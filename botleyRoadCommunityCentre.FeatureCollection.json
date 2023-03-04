@@ -1,0 +1,69 @@
+{
+  "type": "FeatureCollection",
+  "query": [
+    -1.275108978644539,
+    51.752902206037675
+  ],
+  "features": [
+    {
+      "id": "poi.343597474701",
+      "type": "Feature",
+      "place_type": [
+        "poi"
+      ],
+      "relevance": 1,
+      "properties": {
+        "foursquare": "4d3ec9f605b8721e89dca037",
+        "landmark": true,
+        "address": "23 Botley Rd",
+        "category": "business, service, building"
+      },
+      "text": "West Oxford Community Centre",
+      "place_name": "West Oxford Community Centre, 23 Botley Rd, Oxford, England OX2 0PE, United Kingdom",
+      "center": [
+        -1.27516,
+        51.752842
+      ],
+      "geometry": {
+        "coordinates": [
+          -1.27516,
+          51.752842
+        ],
+        "type": "Point"
+      },
+      "context": [
+        {
+          "id": "neighborhood.35466319",
+          "text": "Osney"
+        },
+        {
+          "id": "postcode.9172864591",
+          "text": "OX2 0PE"
+        },
+        {
+          "id": "place.8349775",
+          "wikidata": "Q34217",
+          "text": "Oxford"
+        },
+        {
+          "id": "district.960079",
+          "wikidata": "Q23169",
+          "text": "Oxfordshire"
+        },
+        {
+          "id": "region.9295",
+          "short_code": "GB-ENG",
+          "wikidata": "Q21",
+          "text": "England"
+        },
+        {
+          "id": "country.8783",
+          "short_code": "gb",
+          "wikidata": "Q145",
+          "text": "United Kingdom"
+        }
+      ]
+    }
+  ],
+  "attribution": "NOTICE: © 2023 Mapbox and its suppliers. All rights reserved. Use of this data is subject to the Mapbox Terms of Service (https://www.mapbox.com/about/maps/). This response and the information it contains may not be retained. POI(s) provided by Foursquare."
+}
