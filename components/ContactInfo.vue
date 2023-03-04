@@ -1,7 +1,5 @@
 <script setup>
-const urlMap = ref(
-  "https://www.google.co.uk/maps/place/West+Oxford+Community+Centre/@51.7531613,-1.2758741,17.55z/data=!4m6!3m5!1s0x4876c69aff5db361:0xa8addbae62bb67cc!8m2!3d51.7528669!4d-1.2751845!16s%2Fg%2F1v3hzh5f"
-);
+const urlMap = useRuntimeConfig().urlMap;
 const tel = ref("07860 639758");
 const insta = ref("nenamager_massagetherapy");
 const address = ref([
@@ -21,6 +19,7 @@ const address = ref([
           <a
             :href="'https://www.instagram.com/' + insta"
             class="magic-underline magic-underline--white"
+            target="_blank"
           >
             @{{ insta }}
           </a>
@@ -32,6 +31,7 @@ const address = ref([
           <a
             :href="'tel:' + tel"
             class="magic-underline magic-underline--white"
+            target="_blank"
             >{{ tel }}</a
           >
         </div>

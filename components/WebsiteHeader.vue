@@ -63,10 +63,10 @@ function onScrollTo(id) {
 
           <a
             class="navbar-item"
-            :href="useRuntimeConfig().bookings"
-            target="_blank"
+            href="#location"
+            @click.prevent="onScrollTo('location')"
           >
-            Bookings
+            Location
           </a>
 
           <a

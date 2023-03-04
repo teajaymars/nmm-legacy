@@ -37,10 +37,11 @@ const url = useRuntimeConfig().bookings;
   background: white;
   border-radius: 4px;
   box-shadow: 0px 0px 0px 2px var(--palette-linen);
-  transition: transform 100ms ease-in-out;
+  transition: transform 100ms ease-in-out, box-shadow 100ms ease-in-out;
   color: #4a4a4a;
   &:hover {
     transform: scale(1.03);
+    box-shadow: 0px 0px 0px 2px #cbc2b7;
   }
 }
 

@@ -2,6 +2,13 @@
 import backMassage from "~/assets/images/backMassage.webp";
 import legMassage from "~/assets/images/legMassage.webp";
 import nenaProfilePic from "~/assets/images/nenaProfilePic.webp";
+
+useHead({
+  title: "Nena Mager Massage Therapy in Oxford",
+  meta: {
+    description: "Massage therapy in West Oxford, UK",
+  },
+});
 </script>
 
 <template>
@@ -28,13 +35,14 @@ import nenaProfilePic from "~/assets/images/nenaProfilePic.webp";
           <div class="column">
             <div class="content">
               <p>
-                Based in West Oxford, I'm passionate about providing quality massage therapy. Whether
-                it's a full body restoring massage to help unwind aching muscles
-                and a tired mind; or a deep tissue sports massage, to target
-                specific areas of pain and dysfunction. Whatever your ailment,
-                it's my pleasure to help you. I take a 360&#176; holistic
-                approach - not just treating the areas that hurt, but working
-                with you to find the root cause.
+                Based in West Oxford, I'm passionate about providing quality
+                massage therapy. Whether it's a full body restoring massage to
+                help unwind aching muscles and a tired mind; or a deep tissue
+                sports massage, to target specific areas of pain and
+                dysfunction. Whatever your ailment, it's my pleasure to help
+                you. I take a 360&#176; holistic approach - not just treating
+                the areas that hurt, but working with you to find the root
+                cause.
               </p>
             </div>
           </div>
@@ -52,6 +60,13 @@ import nenaProfilePic from "~/assets/images/nenaProfilePic.webp";
     </section>
 
     <section class="section section-3">
+      <div class="anchor" id="location"></div>
+      <div class="container">
+        <ClinicLocation />
+      </div>
+    </section>
+
+    <section class="section section-4">
       <div class="anchor" id="contact"></div>
       <div class="container">
         <ContactInfo />
@@ -87,6 +102,16 @@ import nenaProfilePic from "~/assets/images/nenaProfilePic.webp";
 }
 .section-3 {
   background: var(--palette-olive);
+  color: white;
+  .title,
+  a,
+  i {
+    color: white;
+  }
+}
+.section-4 {
+  // background: var(--palette-olive);
+  background: #555;
   color: white;
   .title,
   a {
