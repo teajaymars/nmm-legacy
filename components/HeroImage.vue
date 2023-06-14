@@ -22,7 +22,12 @@ function updateOffset() {
 }
 
 if (process.client) {
-  useEventListener(window, "scroll", updateOffset);
+  // Check if the device is a touch-based scroll
+  // If it is, we don't want to use parallax
+  const isTouch = "ontouchstart" in window;
+  if (!isTouch) {
+    useEventListener(window, "scroll", updateOffset);
+  }
 }
 onMounted(updateOffset);
 </script>
