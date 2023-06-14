@@ -23,13 +23,16 @@ function updateOffset() {
 
 if (process.client) {
   // Check if the device is a touch-based scroll
-  // If it is, we don't want to use parallax
-  const isTouch = "ontouchstart" in window;
-  if (!isTouch) {
+  const isTouch = "ontouchstart" in window || navigator.msMaxTouchPoints;
+  if (isTouch) {
+    // If it is, we don't want to use parallax
+    // const { top, height } = sectionRef.value.getBoundingClientRect();
+    relativeY.value = 0;
+  } else {
     useEventListener(window, "scroll", updateOffset);
+    onMounted(updateOffset);
   }
 }
-onMounted(updateOffset);
 </script>
 
 <template>
