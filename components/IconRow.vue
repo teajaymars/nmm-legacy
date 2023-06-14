@@ -20,6 +20,7 @@ defineProps<{
   align-items: flex-start;
   justify-content: flex-start;
   padding: 1rem;
+  word-break: break-word;
   .icon-row__icon {
     margin-right: 1rem;
     height: auto;
@@ -30,6 +31,5 @@ defineProps<{
 
 .icon-row + .icon-row {
   border-top: 2px solid white;
-  // min-width: 400px;
 }
 </style>

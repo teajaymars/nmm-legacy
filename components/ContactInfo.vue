@@ -53,10 +53,12 @@ const address = ref([
     </template>
 
     <template #right>
-      <div
-        class="instagram--wrapper"
-        v-html="useRuntimeConfig().instagramEmbedCode"
-      />
+      <div class="instagram-wrapper">
+        <div
+          class="instagram-html"
+          v-html="useRuntimeConfig().instagramEmbedCode"
+        />
+      </div>
     </template>
   </TwoColumns>
 </template>
@@ -68,20 +70,15 @@ const address = ref([
   font-style: normal;
   color: var(--body-color);
 }
-
-// a {
-//   color: white;
-// }
-
-.instagram--wrapper {
+.instagram-html {
+  @include mobile {
+    display: none;
+  }
+  overflow: hidden;
   border-radius: 4px;
   display: flex;
   background: white;
-  max-width: 100%;
-  overflow: hidden;
+  width: 28rem;
   box-shadow: 0 0 0 2px #dbdbdb;
-  @include tablet {
-    width: 28rem;
-  }
 }
 </style>
