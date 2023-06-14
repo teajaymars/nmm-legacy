@@ -33,7 +33,6 @@ const url = useRuntimeConfig().bookings;
   display: block;
   max-width: 28rem;
   padding: 2rem;
-  margin: 2rem;
   background: white;
   border-radius: 4px;
   box-shadow: 0px 0px 0px 2px var(--palette-linen);
