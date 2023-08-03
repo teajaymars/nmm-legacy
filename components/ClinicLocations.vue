@@ -16,7 +16,17 @@ const address = ref([
     <TwoColumns>
       <template #left>
         <div class="title is-2 mb-6">Clinic Locations</div>
-        <div>Supporting text about this here</div>
+        <div class="content">
+          <p>I work from two locations:</p>
+          <ul>
+            <li>The <strong>Little Health Hub</strong> on Thursdays.</li>
+            <li>
+              My <strong>home clinic</strong> on Tuesdays, Wednesdays, Thursdays
+              and Fridays.
+            </li>
+          </ul>
+          <p>The locations are a one-minute walk from each other.</p>
+        </div>
       </template>
       <template #right>
         <a :href="urlMap" target="_blank" class="oxford-img">
@@ -105,6 +115,10 @@ const address = ref([
 <style lang="scss" scoped>
 @import "~/node_modules/bulma/sass/utilities/mixins.sass";
 
+strong {
+  color: white;
+}
+
 .clinic-locations {
   display: flex;
   gap: 4rem;
@@ -122,10 +136,6 @@ const address = ref([
     max-width: 28rem;
     background: rgba(0, 0, 0, 0.1);
     border-radius: 1rem;
-  }
-  strong {
-    color: white;
-    font-weight: 600;
   }
 }
 
