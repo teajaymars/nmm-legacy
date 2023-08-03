@@ -63,10 +63,10 @@ function onScrollTo(id) {
 
           <a
             class="navbar-item"
-            href="#location"
-            @click.prevent="onScrollTo('location')"
+            href="#locations"
+            @click.prevent="onScrollTo('locations')"
           >
-            Location
+            Locations
           </a>
 
           <a

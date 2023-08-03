@@ -60,9 +60,9 @@ useHead({
     </section>
 
     <section class="section section-3">
-      <div class="anchor" id="location"></div>
+      <div class="anchor" id="locations"></div>
       <div class="container">
-        <ClinicLocation />
+        <ClinicLocations />
       </div>
     </section>
 
