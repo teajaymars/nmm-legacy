@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 defineProps<{
-  icon: string;
+  icon?: string;
 }>();
 </script>
 
 <template>
   <div class="icon-row">
-    <WebpIcon class="icon-row__icon" :icon="icon" />
+    <WebpIcon v-if="icon" class="icon-row__icon" :icon="icon" />
     <div class="content">
       <slot />
     </div>

@@ -1,22 +1,24 @@
 @charset "utf-8";
-@use 'sass:color';
+@use "sass:color";
 
 /* Import a bit of Bulma */
-@import 'bulma/sass/utilities/initial-variables.sass';
+@import "bulma/sass/utilities/initial-variables.sass";
 
-$palette-cream: #FDF6EB;
-$palette-cream-active: #FBECD4;
-$palette-red: #D14F4F;
-$palette-brown: #826C5F;
-$palette-linen: #EBE2D7;
+$palette-cream: #fdf6eb;
+$palette-cream-active: #fbecd4;
+$palette-red: #d14f4f;
+$palette-brown: #826c5f;
+$palette-linen: #ebe2d7;
 // $palette-olive: #A1AC86;
-$palette-olive: #A2AC87;
+$palette-olive: #a2ac87;
+$palette-whatsapp: #24d366;
 
 $red: $palette-red;
 $link: $palette-red;
+$success: $palette-whatsapp;
 
 // $family-sans-serif: 'Poppins';
-$family-sans-serif: 'Commissioner';
+$family-sans-serif: "Commissioner";
 
 /* Use navbar is-light with this */
 $white-ter: $palette-cream;
@@ -50,7 +52,7 @@ $navbar-item-img-max-height: 93px !default;
 
 $body-line-height: 1.7;
 
-@import 'bulma/bulma.sass';
+@import "bulma/bulma.sass";
 
 :root {
   // create a variable
@@ -62,7 +64,6 @@ $body-line-height: 1.7;
   --palette-olive: #{$palette-olive};
   --text: #{$text};
 }
-
 
 /* Theme-wide tweak */
 .title {
@@ -90,5 +91,5 @@ $body-line-height: 1.7;
   background: $white;
 }
 .magic-underline:hover:after {
-  width: 100%; 
+  width: 100%;
 }

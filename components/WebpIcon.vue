@@ -8,11 +8,13 @@ import webpCalendar from "~/assets/images/icons/calendar.webp";
 import webpCar from "~/assets/images/icons/car.webp";
 import webpSignpost from "~/assets/images/icons/signpost.webp";
 import webpTimeline from "~/assets/images/icons/timeline.webp";
+import webpWhatsapp from "~/assets/images/icons/whatsapp.webp";
 const images = {
   envelope: webpEnvelope,
   instagram: webpInstagram,
   phone: webpPhone,
   pin: webpPin,
+  whatsapp: webpWhatsapp,
 
   calendarClock: webpCalendarClock,
   calendar: webpCalendar,

@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const urlMap = useRuntimeConfig().urlMap;
 const tel = ref("07860 639758");
 const insta = ref("nenamager_massagetherapy");
@@ -8,12 +8,36 @@ const address = ref([
   "Oxford",
   "OX2 0BT",
 ]);
+
+const whatsappLink1 = computed<string>(() => {
+  const waNum = tel.value.replace(/\s/g, "").replace(/^0/, "44");
+  const waText = "Hi Nena, I'd like to book a massage";
+  return `https://wa.me/${waNum}?text=${encodeURIComponent(waText)}`;
+});
+
+const whatsappLink2 = computed<string>(() => {
+  const waNum = tel.value.replace(/\s/g, "").replace(/^0/, "44");
+  const waText = "Hi Nena, I'd like to make an enquiry";
+  return `https://wa.me/${waNum}?text=${encodeURIComponent(waText)}`;
+});
 </script>
 
 <template>
   <TwoColumns class="mt-6">
     <template #left>
       <div class="title is-2 mb-6">Get In Touch</div>
+      <IconRow class="is-justify-content-center">
+        <a
+          :href="whatsappLink1"
+          target="_blank"
+          class="button is-large is-success"
+        >
+          <WebpIcon icon="whatsapp" class="mr-3" />
+
+          Book on WhatsApp
+        </a>
+      </IconRow>
+
       <IconRow icon="instagram">
         <a
           :href="'https://www.instagram.com/' + insta"
@@ -24,9 +48,9 @@ const address = ref([
         </a>
       </IconRow>
 
-      <IconRow icon="phone">
+      <IconRow icon="whatsapp">
         <a
-          :href="'tel:' + tel"
+          :href="whatsappLink2"
           class="magic-underline magic-underline--white"
           target="_blank"
           >{{ tel }}</a
