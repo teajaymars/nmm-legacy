@@ -66,14 +66,6 @@ const whatsappLink2 = computed<string>(() => {
           hello@nenamagermassage.co.uk
         </a>
       </IconRow>
-
-      <IconRow icon="pin">
-        <a :href="urlMap" target="_blank">
-          <address class="postal-address">
-            <template v-for="line of address"> {{ line }}<br /> </template>
-          </address>
-        </a>
-      </IconRow>
     </template>
 
     <template #right>

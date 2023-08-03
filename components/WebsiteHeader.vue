@@ -3,7 +3,11 @@ import brandLogo from "~/assets/images/brand-logo.webp";
 
 const active = ref(false);
 
-function onScrollTo(id) {
+function onScrollTo(e, id) {
+  if (useRoute().path !== "/") {
+    return;
+  }
+  e.preventDefault();
   const el = document.getElementById(id);
   el.scrollIntoView({ behavior: "smooth" });
   active.value = false;
@@ -47,34 +51,38 @@ function onScrollTo(id) {
         <div class="navbar-end">
           <a
             class="navbar-item"
-            href="#philosophy"
-            @click.prevent="onScrollTo('philosophy')"
+            href="/#philosophy"
+            @click="(e) => onScrollTo(e, 'philosophy')"
           >
             Philosophy
           </a>
 
           <a
             class="navbar-item"
-            href="#services"
-            @click.prevent="onScrollTo('services')"
+            href="/#services"
+            @click="(e) => onScrollTo(e, 'services')"
           >
             Services
           </a>
 
           <a
             class="navbar-item"
-            href="#locations"
-            @click.prevent="onScrollTo('locations')"
+            href="/#locations"
+            @click="(e) => onScrollTo(e, 'locations')"
           >
             Locations
           </a>
 
           <a
             class="navbar-item"
-            href="#contact"
-            @click.prevent="onScrollTo('contact')"
+            href="/#contact"
+            @click="(e) => onScrollTo(e, 'contact')"
           >
             Contact
+          </a>
+
+          <a class="navbar-item is-hidden-desktop" href="/bookings">
+            Bookings
           </a>
 
           <!-- <div class="navbar-item has-dropdown is-hoverable">
@@ -91,12 +99,8 @@ function onScrollTo(id) {
 
           <div class="navbar-item is-hidden-touch">
             <div class="buttons">
-              <a
-                :href="useRuntimeConfig().bookings"
-                class="button is-dark is-outlined"
-                target="_blank"
-              >
-                <strong>Book Online</strong>
+              <a href="/bookings" class="button is-dark is-outlined">
+                <strong>Bookings</strong>
               </a>
             </div>
           </div>

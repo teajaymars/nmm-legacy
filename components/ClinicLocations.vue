@@ -66,18 +66,6 @@ const address = ref([
         <IconRow icon="car">
           <p>Parking available at the Community Centre.</p>
         </IconRow>
-
-        <IconRow icon="signpost">
-          <p>
-            Follow signs for the
-            <strong>Little Health Hub</strong>.
-          </p>
-          <p>
-            The door to the clinic is to the right of the main entrance, on the
-            front of the building. There is no waiting room, so please don’t
-            arrive too early!
-          </p>
-        </IconRow>
       </div>
 
       <div>

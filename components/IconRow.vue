@@ -1,12 +1,18 @@
 <script lang="ts" setup>
 defineProps<{
   icon?: string;
+  invertedIcon?: boolean;
 }>();
 </script>
 
 <template>
   <div class="icon-row">
-    <WebpIcon v-if="icon" class="icon-row__icon" :icon="icon" />
+    <WebpIcon
+      v-if="icon"
+      class="icon-row__icon"
+      :icon="icon"
+      :inverted="invertedIcon"
+    />
     <div class="content">
       <slot />
     </div>

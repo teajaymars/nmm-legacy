@@ -28,11 +28,26 @@ const props = defineProps({
     type: String,
     required: true,
   },
+  inverted: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const icon = computed(() => images[props.icon]);
 </script>
 
 <template>
-  <img :src="icon" width="28" height="28" />
+  <img
+    :src="icon"
+    width="28"
+    height="28"
+    :class="{ 'is-inverted': inverted }"
+  />
 </template>
+
+<style scoped>
+.is-inverted {
+  filter: invert(1);
+}
+</style>
