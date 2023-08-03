@@ -33,7 +33,10 @@
         Muscle Energy and Neuromuscular Techniques.
       </p>
 
-      <MassagePrice duration="30" price="30" />
+      <MassagePrice duration="30" price="35" />
+      <div class="is-size-7 has-text-grey-dark has-text-centered">
+        (Available for existing clients)
+      </div>
       <MassagePrice duration="60" price="60" />
     </Massage>
 
