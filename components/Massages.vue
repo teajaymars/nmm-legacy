@@ -1,9 +1,6 @@
 <template>
   <div class="massages-group">
-    <Massage
-      massage-title="First Appointment"
-      :options="[{ duration: 60, price: 60 }]"
-    >
+    <Massage massage-title="First Appointment">
       <p>An initial consultation is essential if you haven't seen me before.</p>
       <p>
         We will do a head-to-toe postural assessment, joint assessment and any
@@ -12,17 +9,13 @@
       </p>
       <p>We will also begin treatment in your first session.</p>
       <p>The first step to a more flexible, relaxed and revitalised you!</p>
+
+      <MassagePrice duration="60" price="60" />
     </Massage>
   </div>
 
   <div class="massages-group">
-    <Massage
-      massage-title="Sports/Deep Tissue Massage"
-      :options="[
-        { duration: 30, price: 35 },
-        { duration: 60, price: 60 },
-      ]"
-    >
+    <Massage massage-title="Sports/Deep Tissue Massage">
       <p>
         For those seeking treatment for anything from sports injury, soft tissue
         dysfunction, or everyday aches and pains from the stresses of the day.
@@ -39,12 +32,12 @@
         your specific needs. These include Soft Tissue and Myofascial Release,
         Muscle Energy and Neuromuscular Techniques.
       </p>
+
+      <MassagePrice duration="30" price="30" />
+      <MassagePrice duration="60" price="60" />
     </Massage>
 
-    <Massage
-      massage-title="Relaxing Massage"
-      :options="[{ duration: 60, price: 60 }]"
-    >
+    <Massage massage-title="Relaxing Massage">
       <p>
         For those who just want to unwind.<br />After a short consultation, you
         can choose from either:
@@ -62,6 +55,8 @@
         &lsquo;you&rsquo; time. You will leave feeling thoroughly refreshed, and
         ready to take on the world!
       </p>
+
+      <MassagePrice duration="60" price="60" />
     </Massage>
   </div>
 </template>

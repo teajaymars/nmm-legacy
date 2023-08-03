@@ -20,10 +20,6 @@ const url = useRuntimeConfig().bookings;
         </span>
       </div>
       <slot />
-      <div v-for="{ duration, price } of options" class="massage__price">
-        {{ duration }} mins <span class="bullet">&bullet;</span>
-        <span class="pounds">&pound;</span>{{ price }}
-      </div>
     </div>
   </a>
 </template>
@@ -49,26 +45,6 @@ const url = useRuntimeConfig().bookings;
   text-align: center;
   &:hover {
     color: var(--text);
-  }
-}
-
-.massage__price {
-  color: var(--palette-brown);
-  text-align: center;
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-top: 1rem;
-  &:hover {
-    color: var(--text);
-  }
-  .pounds {
-    font-size: 0.7em;
-    margin-right: 0.2rem;
-    opacity: 0.8;
-  }
-  .bullet {
-    margin: 0 1rem;
-    opacity: 0.3;
   }
 }
 </style>
