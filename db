@@ -1,0 +1,186 @@
+#!/bin/bash
+
+set -e
+
+# -- Check args
+
+ACTION=$1
+TARGET=$2
+if [ -z "$ACTION" ] || [ -z "$TARGET" ] ; then
+  echo "Usage: $0 \$COMMAND \$TARGET"
+  echo
+  echo "Available COMMANDs:"
+  echo "  psql                  # Open an interactive shell"
+  echo "  script \$file.sql     # Run a file"
+  echo "  dump                  # Create a db dump .pgsql file"
+  echo "  restore \$file.pgsql  # Opposite of dump"
+  echo
+  echo "Likely TARGETs:"
+  echo "  local"
+  echo "  strapi-single"
+  exit -1
+fi
+
+echo ACTION=$ACTION
+echo TARGET=$TARGET
+if [[ "$ACTION" == "restore" ]] ; then
+  BACKUPFILE=$3
+  if [[ ! -f $BACKUPFILE ]] ; then
+    echo "Backup file not found: '$BACKUPFILE'" >&2
+    exit -3
+  fi
+  echo BACKUPFILE=$BACKUPFILE
+fi
+
+if [[ "$ACTION" == "script" ]] ; then
+  SCRIPTFILE=$3
+  if [[ ! -f $SCRIPTFILE ]] ; then
+    echo "Script file not found: '$SCRIPTFILE'" >&2
+    exit -3
+  fi
+  echo SCRIPTFILE=$SCRIPTFILE
+fi
+
+# -- Utils for talking to Render
+function get_render_api_key() {
+  # Fetch the API key as a variable from ~/.render/config.yaml:
+  local SRC_FILE=~/.render/config.yaml
+  if [ ! -f "$SRC_FILE" ] ; then
+    echo "File not found: $SRC_FILE" >&2
+    exit -1
+  fi
+  local API_KEY=$(grep apiKey $SRC_FILE | awk '{print $2}')
+  if [ -z "$API_KEY" ] ; then
+    echo "API key not found in $SRC_FILE" >&2
+    exit -2
+  fi
+  echo $API_KEY
+}
+
+# Fetch an environment variable from Render
+function render_fetch_env() {
+  local SERVICE_NAME=$1
+  local ENV_KEY=$2
+  local API_KEY=$(get_render_api_key)
+  local SERVICE_ID=$(render services list --name $SERVICE_NAME | jq -r '.[0].id')
+  local URL="https://api.render.com/v1/services/$SERVICE_ID/env-vars"
+  # Fetch the response with the API key as a Bearer token:
+  local RESPONSE=$(curl \
+    --request GET \
+    --silent \
+    --header "Accept: application/json" \
+    --header "Authorization: Bearer $API_KEY" \
+    --url "$URL" | \
+    # Fetch from [ { "envVar": { "key": "POSTGRES_URL", "value": "..." } } ]
+     jq -r ".[] | select(.envVar.key == \"$ENV_KEY\") | .envVar.value"
+  )
+  if [ -z "$RESPONSE" ] ; then
+    echo "Response not found for $ENV_KEY" >&2
+    exit -3
+  fi
+  echo $RESPONSE
+}
+
+# -- Get POSTGRES_URL
+
+if [[ "local" == "$TARGET" ]] ; then
+  export POSTGRES_URL="postgres://root:password@localhost:5432/restaurants"
+else
+  # Connect to render
+  SERVICE_NAME="${TARGET}"
+  echo "Fetching POSTGRES_URL from Render service: $SERVICE_NAME"
+  export POSTGRES_URL=$(render_fetch_env $SERVICE_NAME 'EXTERNAL_POSTGRES_URL')
+fi
+
+if [[ -z "$POSTGRES_URL" ]] ; then
+  exit -1
+fi
+
+# -- Parse POSTGRES_URL
+
+function url_part () {
+  python3 -c '
+import sys
+from urllib.parse import urlparse
+parts = urlparse(sys.argv[1])
+value = getattr(parts, sys.argv[2])
+print(value or "")
+' $POSTGRES_URL $1
+}
+
+export PGHOST=$(url_part hostname)
+export PGUSER=$(url_part username)
+export PGPASSWORD=$(url_part password)
+export PGDATABASE=$(url_part path | sed 's/^\///')
+export PGPORT=$(url_part port)
+if [[ -z "$PGPORT" ]] ; then
+  export PGPORT=5432
+fi
+
+# -- Connect
+
+echo "Connecting to $PGHOST:$PGPORT"
+
+if [[ "$TARGET" != "local" ]] ; then
+  read -p "Continue (y/n)? " choice
+  case "$choice" in 
+    y|Y ) echo "Proceeding...";;
+    * ) exit;;
+  esac
+fi
+
+if [[ "$ACTION" == "fixdomains" ]] ; then
+  ./runscript scripts/dbFixDomains.ts $TARGET
+
+elif [[ "$ACTION" == "psql" ]] ; then
+  psql
+
+elif [[ "$ACTION" == "script" ]] ; then
+  psql < $SCRIPTFILE
+
+elif [[ "$ACTION" == "dump" ]] ; then
+  echo "Dumping from $TARGET..."
+  TIMESTAMP=$(date +'%Y-%m-%d--%H-%M')
+  BACKUPFILE=".backups/${TARGET}--${TIMESTAMP}.pgsql"
+  mkdir -p .backups
+
+  # Here it is:
+  pg_dump \
+    --verbose \
+    --schema=public \
+    -Fc > $BACKUPFILE
+  CODE=$?
+
+  if [ $CODE -ne 0 ] ; then
+    rm $FILE
+    exit $CODE
+  fi
+
+  echo 'Dump completed successfully.'
+  du -sh $BACKUPFILE
+
+elif [[ "$ACTION" == "restore" ]] ; then
+  echo "Restoring $BACKUPFILE to $TARGET..."
+
+  psql -c 'DROP SCHEMA IF EXISTS public CASCADE'
+  psql -c 'CREATE SCHEMA public'
+  # Here it is:
+  pg_restore \
+    --no-owner \
+    --no-privileges \
+    --clean \
+    --schema=public \
+    --dbname=$PGDATABASE \
+    "$BACKUPFILE" || true
+  # CODE=$?
+
+  # if [ $CODE -ne 0 ] ; then
+  #   exit $CODE
+  # fi
+
+  echo 'Restore completed successfully.'
+
+else 
+  echo "Unrecognised action: $ACTION"
+  exit -4
+fi

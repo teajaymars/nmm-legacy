@@ -1,0 +1,10 @@
+nuxtapp/node_modules
+nuxtapp/.nuxt
+nuxtapp/.output
+nuxtapp/dist
+
+strapi/node_modules
+strapi/.tmp
+strapi/dist
+strapi/.env
+strapi/.strapi-updater.json
