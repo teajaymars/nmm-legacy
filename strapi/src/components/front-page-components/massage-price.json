@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_front_page_components_massage_prices",
+  "info": {
+    "displayName": "MassagePrice",
+    "icon": "priceTag",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Time": {
+      "type": "string"
+    },
+    "Price": {
+      "type": "integer"
+    },
+    "AdditionalNotes": {
+      "type": "string"
+    }
+  }
+}

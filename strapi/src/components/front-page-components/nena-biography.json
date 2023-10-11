@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_front_page_components_nena_biographies",
+  "info": {
+    "displayName": "NenaBiography",
+    "icon": "emotionHappy",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "blocks"
+    }
+  }
+}

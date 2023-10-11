@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "global_settingss",
+  "info": {
+    "singularName": "global-settings",
+    "pluralName": "global-settingss",
+    "displayName": "Global Settings"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Field1": {
+      "type": "string"
+    }
+  }
+}

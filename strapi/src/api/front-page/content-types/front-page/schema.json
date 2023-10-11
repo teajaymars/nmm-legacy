@@ -1,0 +1,31 @@
+{
+  "kind": "singleType",
+  "collectionName": "front_pages",
+  "info": {
+    "singularName": "front-page",
+    "pluralName": "front-pages",
+    "displayName": "Front Page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "HeroText": {
+      "type": "string"
+    },
+    "BiographyZone": {
+      "displayName": "NenaBiography",
+      "type": "component",
+      "repeatable": false,
+      "component": "front-page-components.nena-biography"
+    },
+    "Massages": {
+      "displayName": "Massage",
+      "type": "component",
+      "repeatable": true,
+      "component": "front-page-components.massage"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_front_page_components_massages",
+  "info": {
+    "displayName": "Massage",
+    "icon": "file"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Description": {
+      "type": "blocks"
+    },
+    "PriceList": {
+      "displayName": "MassagePrice",
+      "type": "component",
+      "repeatable": true,
+      "component": "front-page-components.massage-price"
+    }
+  }
+}
