@@ -1,53 +1,10 @@
 <script setup>
-import backMassage from "~/assets/images/backMassage.webp";
-import legMassage from "~/assets/images/legMassage.webp";
-import nenaProfilePic from "~/assets/images/nenaProfilePic.webp";
+import backMassage from '~/assets/images/backMassage.webp';
+import legMassage from '~/assets/images/legMassage.webp';
+import nenaProfilePic from '~/assets/images/nenaProfilePic.webp';
 </script>
 
 <template>
-  <HeroImage :image="backMassage">
-    <div class="hero-text">A 360&#176;<br />approach to massage therapy</div>
-  </HeroImage>
-
-  <section class="section section-1">
-    <div class="anchor" id="philosophy"></div>
-    <div class="container mt-6" style="max-width: 44rem">
-      <div class="title is-2" style="max-width: 20rem">
-        Holistic Massage Philosophy
-      </div>
-
-      <div class="columns mt-6">
-        <div class="column is-one-third">
-          <figure class="image nena-profile-pic">
-            <img class="is-rounded" :src="nenaProfilePic" />
-          </figure>
-        </div>
-        <div class="column">
-          <div class="content">
-            <p>
-              Based in West Oxford, I'm passionate about providing quality
-              massage therapy. Whether it's a full body restoring massage to
-              help unwind aching muscles and a tired mind; or a deep tissue
-              sports massage, to target specific areas of pain and dysfunction.
-              Whatever your ailment, it's my pleasure to help you. I take a
-              360&#176; holistic approach - not just treating the areas that
-              hurt, but working with you to find the root cause.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <HeroImage :image="legMassage" />
-
-  <section class="section section-2">
-    <div class="anchor" id="services"></div>
-    <div class="container">
-      <Massages />
-    </div>
-  </section>
-
   <section class="section section-3">
     <div class="anchor" id="locations"></div>
     <div class="container">
@@ -64,7 +21,7 @@ import nenaProfilePic from "~/assets/images/nenaProfilePic.webp";
 </template>
 
 <style lang="scss">
-@import "~/node_modules/bulma/sass/utilities/mixins.sass";
+@import '~/node_modules/bulma/sass/utilities/mixins.sass';
 
 .hero-text {
   /* Massive white text */
