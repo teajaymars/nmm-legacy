@@ -85,6 +85,20 @@ export interface FrontPageComponentsNenaBiography extends Schema.Component {
   };
 }
 
+export interface MiscBookingsBlock extends Schema.Component {
+  collectionName: 'components_misc_bookings_blocks';
+  info: {
+    displayName: 'BookingsBlock';
+    icon: 'cube';
+  };
+  attributes: {
+    Title: Attribute.String;
+    Subtitle: Attribute.String;
+    Address: Attribute.Blocks;
+    Signposts: Attribute.Blocks;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
@@ -94,6 +108,7 @@ declare module '@strapi/types' {
       'front-page-components.massage-price': FrontPageComponentsMassagePrice;
       'front-page-components.massage': FrontPageComponentsMassage;
       'front-page-components.nena-biography': FrontPageComponentsNenaBiography;
+      'misc.bookings-block': MiscBookingsBlock;
     }
   }
 }

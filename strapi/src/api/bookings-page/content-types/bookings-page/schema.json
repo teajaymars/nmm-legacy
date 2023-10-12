@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "bookings_pages",
+  "info": {
+    "singularName": "bookings-page",
+    "pluralName": "bookings-pages",
+    "displayName": "Bookings Page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "BookingsList": {
+      "type": "component",
+      "repeatable": true,
+      "component": "misc.bookings-block"
+    }
+  }
+}

@@ -9,6 +9,10 @@ type WithRichText<T, K extends keyof T> = Omit<T, K> & {
   [key in K]: RichTextBlock;
 };
 
+type WithString<T, K extends keyof T> = Omit<T, K> & {
+  [key in K]: string;
+};
+
 type WithChildren<T, K extends keyof T, ChildType> = Omit<T, K> & {
   [key in K]: Array<ChildType>;
 };
@@ -43,3 +47,23 @@ export type FrontPage = Omit<
   Massages: Array<Massage>;
   LocationZone: ClinicLocationZone;
 };
+
+export type GlobalSettings = WithString<
+  CT.ApiGlobalSettingsGlobalSettings['attributes'],
+  | 'EmailAddress'
+  | 'GoogleMapsURL'
+  | 'InstagramAccount'
+  | 'PhoneNumber'
+  | 'WhatsAppMessage'
+>;
+
+type BookingsBlock = WithString<
+  WithRichText<C.MiscBookingsBlock['attributes'], 'Address' | 'Signposts'>,
+  'Title' | 'Subtitle'
+>;
+
+export type BookingsPage = WithChildren<
+  CT.ApiBookingsPageBookingsPage['attributes'],
+  'BookingsList',
+  BookingsBlock
+>;

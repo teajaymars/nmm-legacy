@@ -677,6 +677,36 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiBookingsPageBookingsPage extends Schema.SingleType {
+  collectionName: 'bookings_pages';
+  info: {
+    singularName: 'bookings-page';
+    pluralName: 'bookings-pages';
+    displayName: 'Bookings Page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    BookingsList: Attribute.Component<'misc.bookings-block', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::bookings-page.bookings-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::bookings-page.bookings-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiFrontPageFrontPage extends Schema.SingleType {
   collectionName: 'front_pages';
   info: {
@@ -727,6 +757,8 @@ export interface ApiGlobalSettingsGlobalSettings extends Schema.SingleType {
     PhoneNumber: Attribute.String;
     WhatsAppMessage: Attribute.String;
     InstagramAccount: Attribute.String;
+    GoogleMapsURL: Attribute.String;
+    ClinikoURL: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -760,6 +792,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::bookings-page.bookings-page': ApiBookingsPageBookingsPage;
       'api::front-page.front-page': ApiFrontPageFrontPage;
       'api::global-settings.global-settings': ApiGlobalSettingsGlobalSettings;
     }

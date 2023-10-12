@@ -23,6 +23,12 @@
     },
     "InstagramAccount": {
       "type": "string"
+    },
+    "GoogleMapsURL": {
+      "type": "string"
+    },
+    "ClinikoURL": {
+      "type": "string"
     }
   }
 }

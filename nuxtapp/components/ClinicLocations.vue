@@ -13,11 +13,14 @@ const { data: zone } = await useAsyncData(async () => {
   return data.attributes.LocationZone;
 });
 
-const urlMap = useRuntimeConfig().urlMap;
+const { data: settings } = await useAsyncData(async () => {
+  const { data } = await findOne<St.GlobalSettings>('global-settings');
+  return data.attributes;
+});
 </script>
 
 <template>
-  <div class="mt-6 mb-6" v-if="zone">
+  <div class="mt-6 mb-6" v-if="zone && settings">
     <TwoColumns>
       <template #left>
         <div class="title is-2 mb-6">{{ zone.Title }}</div>
@@ -26,7 +29,7 @@ const urlMap = useRuntimeConfig().urlMap;
         </div>
       </template>
       <template #right>
-        <a :href="urlMap" target="_blank" class="oxford-img">
+        <a :href="settings.GoogleMapsURL" target="_blank" class="oxford-img">
           <img
             :src="oxford640z12"
             alt="Location of Nena Mager Massage Clinic: West Oxtord Community Centre"
@@ -45,15 +48,15 @@ const urlMap = useRuntimeConfig().urlMap;
       <div v-for="l of zone.LocationList">
         <div class="title is-3">{{ l.Title }}</div>
 
-        <IconRow icon="pin" v-if="l.Address.length">
+        <IconRow icon="pin" v-if="l.Address && l.Address.length">
           <RichText :json="l.Address" />
         </IconRow>
 
-        <IconRow icon="calendarClock" v-if="l.Times.length">
+        <IconRow icon="calendarClock" v-if="l.Times && l.Times.length">
           <RichText :json="l.Times" />
         </IconRow>
 
-        <IconRow icon="car" v-if="l.Parking.length">
+        <IconRow icon="car" v-if="l.Parking && l.Parking.length">
           <RichText :json="l.Parking" />
         </IconRow>
       </div>

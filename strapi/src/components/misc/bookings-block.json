@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_misc_bookings_blocks",
+  "info": {
+    "displayName": "BookingsBlock",
+    "icon": "cube"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Subtitle": {
+      "type": "string"
+    },
+    "Address": {
+      "type": "blocks"
+    },
+    "Signposts": {
+      "type": "blocks"
+    }
+  }
+}

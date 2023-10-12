@@ -13,9 +13,10 @@ const { data: settings } = await useAsyncData(async () => {
   return data.attributes;
 });
 
-// const urlMap = useRuntimeConfig().urlMap;
-
 const whatsappLink = computed<string>(() => {
+  if (settings.value === null) {
+    return '';
+  }
   const tel = settings.value.PhoneNumber;
   const waText = settings.value.WhatsAppMessage;
   const waNum = tel.replace(/\s/g, '').replace(/^0/, '44');
@@ -23,13 +24,16 @@ const whatsappLink = computed<string>(() => {
 });
 
 const insta = computed<string>(() => {
+  if (settings.value === null) {
+    return '';
+  }
   const raw = settings.value.InstagramAccount;
   return raw.replace(/^@/, '');
 });
 </script>
 
 <template>
-  <TwoColumns class="mt-6">
+  <TwoColumns class="mt-6" v-if="settings">
     <template #left>
       <div class="title is-2 mb-6">Get In Touch</div>
       <IconRow class="is-justify-content-center">
