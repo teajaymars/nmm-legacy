@@ -1,31 +1,28 @@
-<script setup>
-import oxford640z14 from "~/assets/images/oxford640.z14.png";
-import oxford640z12 from "~/assets/images/oxford640.z12.png";
-const urlMap = useRuntimeConfig().urlMap;
+<script setup lang="ts">
+import oxford640z14 from '~/assets/images/oxford640.z14.png';
+import oxford640z12 from '~/assets/images/oxford640.z12.png';
+import RichText from '~/components/richtext/RichText.vue';
+import * as St from '~/strapi-types';
 
-const address = ref([
-  "The Little Health Hub",
-  "West Oxford Community Centre",
-  "Botley Road",
-  "OX2 0BT",
-]);
+const { findOne } = useStrapi();
+
+const { data: zone } = await useAsyncData(async () => {
+  const { data } = await findOne<St.FrontPage>('front-page', {
+    populate: ['LocationZone', 'LocationZone.LocationList'],
+  });
+  return data.attributes.LocationZone;
+});
+
+const urlMap = useRuntimeConfig().urlMap;
 </script>
 
 <template>
-  <div class="mt-6 mb-6">
+  <div class="mt-6 mb-6" v-if="zone">
     <TwoColumns>
       <template #left>
-        <div class="title is-2 mb-6">Clinic Locations</div>
+        <div class="title is-2 mb-6">{{ zone.Title }}</div>
         <div class="content">
-          <p>I work from two locations:</p>
-          <ul>
-            <li>The <strong>Little Health Hub</strong> on Thursdays.</li>
-            <li>
-              My <strong>home clinic</strong> on Tuesdays, Wednesdays, Thursdays
-              and Fridays.
-            </li>
-          </ul>
-          <p>The locations are a one-minute walk from each other.</p>
+          <RichText :json="zone.Blurb" />
         </div>
       </template>
       <template #right>
@@ -45,55 +42,19 @@ const address = ref([
     </TwoColumns>
 
     <div class="clinic-locations mt-6">
-      <div>
-        <div class="title is-3">Thursday Clinic</div>
+      <div v-for="l of zone.LocationList">
+        <div class="title is-3">{{ l.Title }}</div>
 
-        <IconRow icon="pin">
-          <a :href="urlMap" target="_blank">
-            <address class="postal-address">
-              <template v-for="line of address"> {{ line }}<br /> </template>
-            </address>
-          </a>
+        <IconRow icon="pin" v-if="l.Address.length">
+          <RichText :json="l.Address" />
         </IconRow>
 
-        <IconRow icon="calendarClock">
-          <p>
-            Clinic Hours: <br />
-            <strong>Thursday</strong> 2pm - 5:30pm<br />
-          </p>
+        <IconRow icon="calendarClock" v-if="l.Times.length">
+          <RichText :json="l.Times" />
         </IconRow>
 
-        <IconRow icon="car">
-          <p>Parking available at the Community Centre.</p>
-        </IconRow>
-      </div>
-
-      <div>
-        <div class="title is-3">Home Clinic</div>
-
-        <IconRow icon="pin">
-          <p>
-            My home clinic is across the road from the Little Health Hub in OX2
-            0BT.
-          </p>
-          <p>Full address given upon booking.</p>
-        </IconRow>
-
-        <IconRow icon="calendarClock">
-          <p>
-            Clinic Hours: <br />
-            <strong>Tuesday</strong> Daytime<br />
-            <strong>Wednesday</strong> Daytime<br />
-            <strong>Thursday</strong> Evening<br />
-            <strong>Friday</strong> Daytime<br />
-          </p>
-        </IconRow>
-
-        <IconRow icon="car">
-          <p>
-            Parking available on Bridge Street, with permits available on
-            request.
-          </p>
+        <IconRow icon="car" v-if="l.Parking.length">
+          <RichText :json="l.Parking" />
         </IconRow>
       </div>
     </div>
@@ -101,7 +62,7 @@ const address = ref([
 </template>
 
 <style lang="scss" scoped>
-@import "~/node_modules/bulma/sass/utilities/mixins.sass";
+@import '~/node_modules/bulma/sass/utilities/mixins.sass';
 
 strong {
   color: white;

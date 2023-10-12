@@ -1,27 +1,45 @@
-import {
-  ApiGlobalSettingsGlobalSettings,
-  ApiFrontPageFrontPage,
-} from '../strapi/types/generated/contentTypes';
-import {
-  FrontPageComponentsNenaBiography,
-  FrontPageComponentsMassage,
-  FrontPageComponentsMassagePrice,
-} from '../strapi/types/generated/components';
+import * as CT from '../strapi/types/generated/contentTypes';
+import * as C from '../strapi/types/generated/components';
 
-export type GlobalSettings = ApiGlobalSettingsGlobalSettings['attributes'];
+export type RichTextBlock = Array<any>;
 
-type FrontPageRaw = ApiFrontPageFrontPage['attributes'];
-
-export type Massage = Omit<
-  FrontPageComponentsMassage['attributes'],
-  'PriceList'
-> & {
-  PriceList: Array<FrontPageComponentsMassagePrice['attributes']>;
+// Create a helper which accepts a parent type and a key of that parent.
+// It omits the original key/value and replaces it with [key]: RichTextBlock.
+type WithRichText<T, K extends keyof T> = Omit<T, K> & {
+  [key in K]: RichTextBlock;
 };
 
-export type FrontPage = Omit<FrontPageRaw, 'BiographyZone' | 'Massages'> & {
-  BiographyZone: FrontPageComponentsNenaBiography['attributes'] & {
-    description: any[];
-  };
+type WithChildren<T, K extends keyof T, ChildType> = Omit<T, K> & {
+  [key in K]: Array<ChildType>;
+};
+
+type MassagePrice = C.FrontPageComponentsMassagePrice['attributes'];
+export type Massage = WithChildren<
+  WithRichText<C.FrontPageComponentsMassage['attributes'], 'Description'>,
+  'PriceList',
+  MassagePrice
+>;
+
+export type ClinicLocation = WithRichText<
+  C.FrontPageComponentsClinicLocation['attributes'],
+  'Address' | 'Parking' | 'Times'
+>;
+export type ClinicLocationZone = WithChildren<
+  WithRichText<C.FrontPageComponentsClinicLocationZone['attributes'], 'Blurb'>,
+  'LocationList',
+  ClinicLocation
+>;
+
+export type BiographyZone = WithRichText<
+  C.FrontPageComponentsNenaBiography['attributes'],
+  'Description'
+>;
+
+export type FrontPage = Omit<
+  CT.ApiFrontPageFrontPage['attributes'],
+  'BiographyZone' | 'Massages' | 'LocationZone'
+> & {
+  BiographyZone: BiographyZone;
   Massages: Array<Massage>;
+  LocationZone: ClinicLocationZone;
 };

@@ -59,4 +59,11 @@ const fp = computed<St.FrontPage>(() => {
       <MassageList />
     </div>
   </section>
+
+  <section class="section section-3">
+    <div class="anchor" id="locations"></div>
+    <div class="container">
+      <ClinicLocations />
+    </div>
+  </section>
 </template>

@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_fp_locations",
+  "info": {
+    "displayName": "ClinicLocation",
+    "icon": "pinMap"
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Address": {
+      "type": "blocks"
+    },
+    "Times": {
+      "type": "blocks"
+    },
+    "Parking": {
+      "type": "blocks"
+    }
+  }
+}

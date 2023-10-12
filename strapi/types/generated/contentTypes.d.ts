@@ -692,6 +692,7 @@ export interface ApiFrontPageFrontPage extends Schema.SingleType {
     HeroText: Attribute.String;
     BiographyZone: Attribute.Component<'front-page-components.nena-biography'>;
     Massages: Attribute.Component<'front-page-components.massage', true>;
+    LocationZone: Attribute.Component<'front-page-components.clinic-location-zone'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

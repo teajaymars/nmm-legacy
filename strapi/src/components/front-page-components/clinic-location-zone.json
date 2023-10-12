@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_fp_location_zones",
+  "info": {
+    "displayName": "ClinicLocationZone",
+    "icon": "pinMap",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Blurb": {
+      "type": "blocks"
+    },
+    "LocationList": {
+      "type": "component",
+      "repeatable": true,
+      "component": "front-page-components.clinic-location"
+    }
+  }
+}
