@@ -99,6 +99,18 @@ export interface MiscBookingsBlock extends Schema.Component {
   };
 }
 
+export interface MiscFaqEntry extends Schema.Component {
+  collectionName: 'components_misc_faq_entries';
+  info: {
+    displayName: 'FaqEntry';
+    icon: 'quote';
+  };
+  attributes: {
+    Question: Attribute.String;
+    Answer: Attribute.Blocks;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
@@ -109,6 +121,7 @@ declare module '@strapi/types' {
       'front-page-components.massage': FrontPageComponentsMassage;
       'front-page-components.nena-biography': FrontPageComponentsNenaBiography;
       'misc.bookings-block': MiscBookingsBlock;
+      'misc.faq-entry': MiscFaqEntry;
     }
   }
 }

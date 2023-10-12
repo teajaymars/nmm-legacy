@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "faqs",
+  "info": {
+    "singularName": "faq",
+    "pluralName": "faqs",
+    "displayName": "Faq"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Enabled": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "Entries": {
+      "type": "component",
+      "repeatable": true,
+      "component": "misc.faq-entry"
+    }
+  }
+}

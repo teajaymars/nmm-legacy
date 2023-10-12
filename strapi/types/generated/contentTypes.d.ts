@@ -707,6 +707,31 @@ export interface ApiBookingsPageBookingsPage extends Schema.SingleType {
   };
 }
 
+export interface ApiFaqFaq extends Schema.SingleType {
+  collectionName: 'faqs';
+  info: {
+    singularName: 'faq';
+    pluralName: 'faqs';
+    displayName: 'Faq';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Enabled: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
+    Entries: Attribute.Component<'misc.faq-entry', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::faq.faq', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::faq.faq', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiFrontPageFrontPage extends Schema.SingleType {
   collectionName: 'front_pages';
   info: {
@@ -793,6 +818,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
       'api::bookings-page.bookings-page': ApiBookingsPageBookingsPage;
+      'api::faq.faq': ApiFaqFaq;
       'api::front-page.front-page': ApiFrontPageFrontPage;
       'api::global-settings.global-settings': ApiGlobalSettingsGlobalSettings;
     }

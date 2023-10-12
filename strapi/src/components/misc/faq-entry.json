@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_misc_faq_entries",
+  "info": {
+    "displayName": "FaqEntry",
+    "icon": "quote"
+  },
+  "options": {},
+  "attributes": {
+    "Question": {
+      "type": "string"
+    },
+    "Answer": {
+      "type": "blocks"
+    }
+  }
+}

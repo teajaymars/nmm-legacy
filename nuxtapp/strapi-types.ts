@@ -55,6 +55,7 @@ export type GlobalSettings = WithString<
   | 'InstagramAccount'
   | 'PhoneNumber'
   | 'WhatsAppMessage'
+  | 'ClinikoURL'
 >;
 
 type BookingsBlock = WithString<
@@ -67,3 +68,7 @@ export type BookingsPage = WithChildren<
   'BookingsList',
   BookingsBlock
 >;
+
+export type FaqEntry = WithRichText<C.MiscFaqEntry['attributes'], 'Answer'>;
+
+export type Faq = WithChildren<CT.ApiFaqFaq['attributes'], 'Entries', FaqEntry>;
