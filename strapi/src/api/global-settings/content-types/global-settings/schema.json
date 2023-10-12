@@ -4,14 +4,24 @@
   "info": {
     "singularName": "global-settings",
     "pluralName": "global-settingss",
-    "displayName": "Global Settings"
+    "displayName": "Global Settings",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
-    "Field1": {
+    "EmailAddress": {
+      "type": "string"
+    },
+    "PhoneNumber": {
+      "type": "string"
+    },
+    "WhatsAppMessage": {
+      "type": "string"
+    },
+    "InstagramAccount": {
       "type": "string"
     }
   }

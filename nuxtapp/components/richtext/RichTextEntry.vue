@@ -43,7 +43,7 @@ function without(object: any, key: string) {
   <li v-else-if="object.type === 'list-item'">
     <RichText :json="object.children" />
   </li>
-  <a v-else-if="object.type === 'link'" :href="object.url" :target="_blank">
+  <a v-else-if="object.type === 'link'" :href="object.url" target="_blank">
     <RichText :json="object.children" />
   </a>
   <b v-else-if="object.type === 'text' && object.bold">

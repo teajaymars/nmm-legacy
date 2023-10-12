@@ -1,24 +1,30 @@
 <script setup lang="ts">
-const urlMap = useRuntimeConfig().urlMap;
-const tel = ref("07860 639758");
-const insta = ref("nenamager_massagetherapy");
-const address = ref([
-  "West Oxford Community Centre",
-  "Botley Road",
-  "Oxford",
-  "OX2 0BT",
-]);
+import * as St from '~/strapi-types';
 
-const whatsappLink1 = computed<string>(() => {
-  const waNum = tel.value.replace(/\s/g, "").replace(/^0/, "44");
-  const waText = "Hi Nena, I'd like to book a massage";
+const { findOne } = useStrapi();
+
+const { data: instaCode } = await useAsyncData(async () => {
+  const { data } = await findOne<St.FrontPage>('front-page');
+  return data.attributes.InstagramEmbedCode;
+});
+
+const { data: settings } = await useAsyncData(async () => {
+  const { data } = await findOne<St.GlobalSettings>('global-settings');
+  return data.attributes;
+});
+
+// const urlMap = useRuntimeConfig().urlMap;
+
+const whatsappLink = computed<string>(() => {
+  const tel = settings.value.PhoneNumber;
+  const waText = settings.value.WhatsAppMessage;
+  const waNum = tel.replace(/\s/g, '').replace(/^0/, '44');
   return `https://wa.me/${waNum}?text=${encodeURIComponent(waText)}`;
 });
 
-const whatsappLink2 = computed<string>(() => {
-  const waNum = tel.value.replace(/\s/g, "").replace(/^0/, "44");
-  const waText = "Hi Nena, I'd like to make an enquiry";
-  return `https://wa.me/${waNum}?text=${encodeURIComponent(waText)}`;
+const insta = computed<string>(() => {
+  const raw = settings.value.InstagramAccount;
+  return raw.replace(/^@/, '');
 });
 </script>
 
@@ -28,7 +34,7 @@ const whatsappLink2 = computed<string>(() => {
       <div class="title is-2 mb-6">Get In Touch</div>
       <IconRow class="is-justify-content-center">
         <a
-          :href="whatsappLink1"
+          :href="whatsappLink"
           target="_blank"
           class="button is-large is-success"
         >
@@ -50,37 +56,34 @@ const whatsappLink2 = computed<string>(() => {
 
       <IconRow icon="whatsapp">
         <a
-          :href="whatsappLink2"
+          :href="whatsappLink"
           class="magic-underline magic-underline--white"
           target="_blank"
-          >{{ tel }}</a
+          >{{ settings.PhoneNumber }}</a
         >
       </IconRow>
 
       <IconRow icon="envelope">
         <a
-          href="mailto:hello@nenamagermassage.co.uk"
+          :href="'mailto:' + settings.EmailAddress"
           target="_blank"
           class="magic-underline magic-underline--white"
         >
-          hello@nenamagermassage.co.uk
+          {{ settings.EmailAddress }}
         </a>
       </IconRow>
     </template>
 
-    <template #right>
+    <template #right v-if="instaCode">
       <div class="instagram-wrapper">
-        <div
-          class="instagram-html"
-          v-html="useRuntimeConfig().instagramEmbedCode"
-        />
+        <div class="instagram-html" v-html="instaCode" />
       </div>
     </template>
   </TwoColumns>
 </template>
 
 <style lang="scss" scoped>
-@import "~/node_modules/bulma/sass/utilities/mixins.sass";
+@import '~/node_modules/bulma/sass/utilities/mixins.sass';
 
 .postal-address {
   font-style: normal;

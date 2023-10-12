@@ -32,6 +32,19 @@ export interface FrontPageComponentsClinicLocation extends Schema.Component {
   };
 }
 
+export interface FrontPageComponentsContactzone extends Schema.Component {
+  collectionName: 'components_front_page_components_contactzones';
+  info: {
+    displayName: 'Contactzone';
+    icon: 'picture';
+  };
+  attributes: {
+    Instagram: Attribute.String;
+    Phone: Attribute.String;
+    Email: Attribute.String;
+  };
+}
+
 export interface FrontPageComponentsMassagePrice extends Schema.Component {
   collectionName: 'components_fp_massage_prices';
   info: {
@@ -77,6 +90,7 @@ declare module '@strapi/types' {
     export interface Components {
       'front-page-components.clinic-location-zone': FrontPageComponentsClinicLocationZone;
       'front-page-components.clinic-location': FrontPageComponentsClinicLocation;
+      'front-page-components.contactzone': FrontPageComponentsContactzone;
       'front-page-components.massage-price': FrontPageComponentsMassagePrice;
       'front-page-components.massage': FrontPageComponentsMassage;
       'front-page-components.nena-biography': FrontPageComponentsNenaBiography;

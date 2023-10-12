@@ -13,7 +13,7 @@ defineProps<{
       :icon="icon"
       :inverted="invertedIcon"
     />
-    <div class="content">
+    <div class="content icon-row__content">
       <slot />
     </div>
   </div>
@@ -32,6 +32,16 @@ defineProps<{
     height: auto;
     flex-grow: 0;
     padding-top: 1px;
+  }
+  .icon-row__content {
+    line-height: 1.5;
+    // change the spacing between paragraphs
+    p {
+      margin-bottom: 0.3rem;
+    }
+    ul {
+      margin-top: 0.3rem;
+    }
   }
 }
 

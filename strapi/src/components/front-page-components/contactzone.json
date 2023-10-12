@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_front_page_components_contactzones",
+  "info": {
+    "displayName": "Contactzone",
+    "icon": "picture"
+  },
+  "options": {},
+  "attributes": {
+    "Instagram": {
+      "type": "string"
+    },
+    "Phone": {
+      "type": "string"
+    },
+    "Email": {
+      "type": "string"
+    }
+  }
+}

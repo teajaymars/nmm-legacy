@@ -693,6 +693,7 @@ export interface ApiFrontPageFrontPage extends Schema.SingleType {
     BiographyZone: Attribute.Component<'front-page-components.nena-biography'>;
     Massages: Attribute.Component<'front-page-components.massage', true>;
     LocationZone: Attribute.Component<'front-page-components.clinic-location-zone'>;
+    InstagramEmbedCode: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -716,12 +717,16 @@ export interface ApiGlobalSettingsGlobalSettings extends Schema.SingleType {
     singularName: 'global-settings';
     pluralName: 'global-settingss';
     displayName: 'Global Settings';
+    description: '';
   };
   options: {
     draftAndPublish: false;
   };
   attributes: {
-    Field1: Attribute.String;
+    EmailAddress: Attribute.String;
+    PhoneNumber: Attribute.String;
+    WhatsAppMessage: Attribute.String;
+    InstagramAccount: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
