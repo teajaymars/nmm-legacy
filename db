@@ -17,7 +17,7 @@ if [ -z "$ACTION" ] || [ -z "$TARGET" ] ; then
   echo
   echo "Likely TARGETs:"
   echo "  local"
-  echo "  strapi-single"
+  echo "  nenamagermassage-web"
   exit -1
 fi
 
@@ -84,7 +84,7 @@ function render_fetch_env() {
 # -- Get POSTGRES_URL
 
 if [[ "local" == "$TARGET" ]] ; then
-  export POSTGRES_URL="postgres://root:password@localhost:5432/restaurants"
+  export POSTGRES_URL="postgres://root:password@localhost:5432/nenamagermassage"
 else
   # Connect to render
   SERVICE_NAME="${TARGET}"
